@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lingua — Flashcards for Language Learning</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">🗣️ Lingua</a>
+  <nav>
+    <a href="index.html" class="active">Study</a>
+    <a href="decks.html">Decks</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<main class="study">
+  <div class="deckbar">
+    <label>Deck
+      <select id="deck"></select>
+    </label>
+    <span class="counter" id="counter">0 / 0</span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="inner">
+      <div class="face front"><span class="lang" id="frontLang"></span><p id="front">Pick a deck to begin</p><small>tap to flip</small></div>
+      <div class="face back"><span class="lang">English</span><p id="back"></p><small>tap to flip</small></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn again" onclick="grade(false)">↺ Again</button>
+    <button class="btn flip" onclick="flip()">Flip</button>
+    <button class="btn know" onclick="grade(true)">✓ Know it</button>
+  </div>
+  <p class="hint">Session progress is saved in your browser.</p>
+</main>
+<footer class="foot">Lingua · SKRIZIdev</footer>
+<script src="js/data.js"></script>
+<script src="js/study.js"></script>
+</body>
+</html>

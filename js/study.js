@@ -18,6 +18,7 @@ function next() {
   if (!queue.length) {
     $('front').textContent = '🎉 Deck complete!';
     $('back').textContent = 'Nice work.';
+    if (current !== null && window.UI) UI.toast('Deck complete — great job! 🎉', 'success', 3000);
     current = null; return;
   }
   current = queue[0];
@@ -38,3 +39,11 @@ const sel = $('deck');
 Object.entries(DECKS).forEach(([id, d]) => sel.add(new Option(d.name, id)));
 sel.onchange = () => { deckId = sel.value; buildQueue(); };
 deckId = sel.value; buildQueue();
+
+// keyboard: space/enter = flip, → = know, ← = again
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'SELECT') return;
+  if (e.code === 'Space' || e.code === 'Enter') { e.preventDefault(); flip(); }
+  else if (e.code === 'ArrowRight') grade(true);
+  else if (e.code === 'ArrowLeft') grade(false);
+});

@@ -9,5 +9,6 @@ box.innerHTML = Object.entries(DECKS).map(([id, d]) => {
     <small>${done} / ${total} learned · ${pct}%</small></div>`;
 }).join('');
 function resetAll() {
-  if (confirm('Reset progress for all decks?')) { localStorage.removeItem('lingua.known'); location.reload(); }
+  UI.confirm('Reset progress for all decks? This can\'t be undone.', { danger: true, ok: 'Reset all' })
+    .then(yes => { if (yes) { localStorage.removeItem('lingua.known'); UI.toast('Progress reset', 'info'); setTimeout(() => location.reload(), 500); } });
 }

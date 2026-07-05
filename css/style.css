@@ -39,3 +39,16 @@ select{font:inherit;margin-left:8px;background:var(--panel);color:var(--txt);bor
 .deck-row small{color:var(--muted)}
 .prose{color:var(--muted)} .prose h3{color:var(--txt);margin:16px 0 8px} .prose ul{margin-left:20px} .prose b{color:var(--txt)}
 .foot{text-align:center;color:var(--muted);padding:28px;font-size:.85rem;border-top:1px solid var(--line)}
+
+/* ---- enhancements: animations, hints ---- */
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes cardSwap{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.study>*{opacity:0;animation:riseIn .5s ease both}
+.study>*:nth-child(2){animation-delay:.08s}.study>*:nth-child(3){animation-delay:.16s}.study>*:nth-child(4){animation-delay:.24s}
+.card:not(.flipped) .inner{animation:cardSwap .3s ease}
+.btn{transition:transform .1s,filter .15s}.btn:active{transform:scale(.94)}
+.controls .btn:hover{transform:translateY(-2px)}
+.deck-row{opacity:0;animation:riseIn .5s ease both}
+.deck-row:nth-child(2){animation-delay:.1s}.deck-row:nth-child(3){animation-delay:.2s}
+.deck-row .bar div{transition:width .6s cubic-bezier(.2,.9,.3,1)}
+.hint::after{content:' · keys: Space flip, → know, ← again';opacity:.7}
